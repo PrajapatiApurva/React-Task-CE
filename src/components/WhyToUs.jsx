@@ -1,5 +1,5 @@
 import React from "react";
-import CompanySec from "./companySec";
+import CompanySec from "./CompanySec";
 import Reaction from "./Reaction";
 import WhyChoose from "./WhyChoose";
 
