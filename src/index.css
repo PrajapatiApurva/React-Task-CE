@@ -1,0 +1,19 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --color-Start: #254A76;
+  --color-navText: #262626;
+  --color-changeStart: #80BBEB;
+  --color-changeEnd: #254A76;
+  --color-Dark: #262626;
+}
+
+#videoSection{
+  background: linear-gradient( white, white);
+  filter: drop-shadow(#CF28B0 5px 5px 10px);
+}
+
+#planSection{
+  filter: drop-shadow(#CF28B0 5px 5px 10px);
+}
