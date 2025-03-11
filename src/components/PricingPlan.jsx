@@ -51,33 +51,25 @@ function PricingPlan() {
       <h2 className="text-3xl font-bold text-gray-900 mb-6">Pick your plan. We make this part easy too.</h2>
 
       {/* Toggle Button */}
-      <div className="flex space-x-2 bg-gray-200 rounded-full mb-8 h-[60px] w-[300px]">
-        <button
-          className={`px-6 py-2 w-[100%] rounded-full transition ${
-            billingCycle === "monthly" ? "bg-blue-600 text-white" : "text-gray-600"
-          }`}
-          onClick={() => {
-            setBillingCycle("monthly");
-            setSelectedPlan(null);
-          }}
-        >
-          Monthly
-        </button>
-        <button
-          className={`px-6 py-2 w-[100%] rounded-full transition ${
-            billingCycle === "annually" ? "bg-blue-600 text-white" : "text-gray-600"
-          }`}
-          onClick={() => {
-            setBillingCycle("annually");
-            setSelectedPlan(null);
-          }}
-        >
-          Annually
-        </button>
+      <div className="flex bg-gray-200 rounded-full mb-8 h-[50px] w-[280px]">
+        {['monthly', 'annually'].map((cycle) => (
+          <button
+            key={cycle}
+            className={`px-6 py-2 w-1/2 rounded-full transition font-medium ${
+              billingCycle === cycle ? "bg-blue-600 text-white" : "text-gray-600 hover:bg-gray-300"
+            }`}
+            onClick={() => {
+              setBillingCycle(cycle);
+              setSelectedPlan(null);
+            }}
+          >
+            {cycle.charAt(0).toUpperCase() + cycle.slice(1)}
+          </button>
+        ))}
       </div>
 
       {/* Plans */}
-      <div className="grid md:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 w-full max-w-6xl px-4">
         {plans[billingCycle].map((plan, index) => {
           const isSelected = selectedPlan === index;
 
@@ -85,12 +77,11 @@ function PricingPlan() {
             <div
               key={index}
               id="planSection"
-              className={`p-6 rounded-lg shadow-lg h-[535px] w-[372px]  text-left text-center flex flex-col cursor-pointer transition ${
-                isSelected
-                  ? "bg-white text-gray-900 border-2 border-purple-500"
-                  : "bg-[#254A76] text-white"
+              className={`p-6 rounded-lg shadow-lg text-center flex flex-col cursor-pointer transition w-full md:w-[372px] lg:h-[500px] border-2 ${
+                isSelected ? "bg-white text-gray-900 border-purple-500" : "bg-[#254A76] text-white border-transparent"
               }`}
               onClick={() => setSelectedPlan(index)}
+              aria-selected={isSelected}
             >
               <h3 className="text-2xl">{plan.name}</h3>
               <p className="flex items-start text-lg gap-0.5 mt-2">

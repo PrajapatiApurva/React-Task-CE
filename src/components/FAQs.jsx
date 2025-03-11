@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Plus, Minus } from "lucide-react";
 
-const faqData = [
+const faqDataArray = [
   {
     question: "Are DocuTech signatures legally binding?",
     answer:
@@ -18,9 +18,9 @@ const faqData = [
       "Absolutely! DocuTech is designed for both personal and business use, providing secure and legally binding digital signatures for contracts of all kinds.",
   },
   {
-    question: "Can I use DocuTech for business contracts?",
+    question: "What file formats does DocuTech support?",
     answer:
-      "Absolutely! DocuTech is designed for both personal and business use, providing secure and legally binding digital signatures for contracts of all kinds.",
+      "DocuTech supports PDFs, Word documents, and various image formats like PNG and JPG for uploading and signing documents.",
   },
 ];
 
@@ -32,28 +32,24 @@ function FAQs() {
   };
 
   return (
-    <div className="py-12 px-6 w-[1190px] mx-auto">
+    <div className="py-12 px-6 max-w-4xl w-full mx-auto">
       <h2 className="text-3xl font-bold text-center mb-6">FAQs</h2>
       <div className="space-y-4">
-        {faqData.map((faq, index) => (
+        {faqDataArray.map((faq, index) => (
           <div
-            id={openIndex === index ? "planSection" : ""}
             key={index}
-            className="shadow-lg"
+            id={openIndex === index ? "planSection" : ""}
+            className="shadow-lg border border-gray-300 rounded-lg"
           >
             <button
-              className={`w-full rounded-[20px] bg-Start flex justify-between items-center p-4 text-lg font-semibold transition ${
-                openIndex === index ? "text-white" : "text-white"
-              }`}
+              className="w-full flex justify-between items-center p-4 text-lg font-semibold bg-Start text-white rounded-t-lg"
               onClick={() => toggleFAQ(index)}
             >
               {faq.question}
               {openIndex === index ? <Minus size={24} /> : <Plus size={24} />}
             </button>
             {openIndex === index && (
-              <div
-                className=" text-center p-4 text-gray-700 border-Dark border-b-1 border-r-1 border-l-1 rounded-b-lg"
-              >
+              <div className="p-4 text-gray-700 border-t border-gray-300 rounded-b-lg">
                 {faq.answer}
               </div>
             )}

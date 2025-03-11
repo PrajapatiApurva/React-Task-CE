@@ -8,6 +8,7 @@ import {
 } from "lucide-react";
 import logo from "../assets/images/logo_white.png";
 import AnchorLink from "react-anchor-link-smooth-scroll";
+
 export default function Footer() {
   return (
     <footer className="bg-Start rounded-t-[30px] text-white py-8 px-6">

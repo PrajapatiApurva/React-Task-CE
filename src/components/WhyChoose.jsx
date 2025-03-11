@@ -27,13 +27,13 @@ function WhyChoose() {
   const [selected, setSelected] = useState(options[0]); // Default selection
 
   return (
-    <div className="flex flex-col items-center py-12">
-      <h2 className="text-[30px] text-center font-bold mb-6">
-        What our users say
+    <div className="flex flex-col items-center py-12 px-4 md:px-8">
+      <h2 className="text-2xl md:text-3xl text-center font-bold mb-6">
+        Why Choose Docutech
       </h2>
-      <div className="w-full bg-white p-8 flex justify-center gap-10">
+      <div className="w-full flex flex-wrap md:flex-nowrap justify-center gap-6">
         {/* Left Sidebar (Options) */}
-        <div className="w-1/3 space-y-4">
+        <div className="w-full md:w-1/3 space-y-4">
           {options.map((option, index) => (
             <button
               key={index}
@@ -42,11 +42,14 @@ function WhyChoose() {
                   ? "videoSection"
                   : ""
               }
-              className={`w-[427px] h-[85px] p-4 text-left text-[#4A4A4A] rounded-[30px] font-bold border-2 transition-all duration-300 ${
-                selected.title === option.title
-                  ? "border-purple-500 bg-gradient-to-r from-blue-100 to-purple-200 text-[#254A76]"
-                  : " border-gray-300 bg-gray-100 text-gray-700 hover:bg-gray-200"
-              }`}
+              aria-selected={selected.title === option.title}
+              className={`w-full md:w-[427px] h-[85px] p-4 text-left rounded-[30px] font-bold border-2 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-purple-500
+                ${
+                  selected.title === option.title
+                    ? "border-purple-500 bg-gradient-to-r from-blue-100 to-purple-200 text-[#254A76] shadow-md"
+                    : "border-gray-300 bg-gray-100 text-gray-700 hover:bg-gray-200"
+                }`
+              }
               onClick={() => setSelected(option)}
             >
               {option.title}
@@ -55,8 +58,8 @@ function WhyChoose() {
         </div>
 
         {/* Right Content Box */}
-        <div className="h-[715px] w-[737px] flex justify-center items-center p-6 border-2 border-Start rounded-lg shadow-md">
-          <p className="text-lg font-medium text-gray-700">
+        <div className="w-full md:w-[737px] flex justify-center items-center p-6 border-2 border-Start rounded-lg shadow-md min-h-[500px]">
+          <p className="text-lg font-medium text-gray-700 text-center md:text-left">
             {selected.content}
           </p>
         </div>
